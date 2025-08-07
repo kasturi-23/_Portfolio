@@ -20,47 +20,48 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-12 sm:col-span-8 place-self-center text-center sm:text-left justify-self-start px-2"
         >
-          <h1 className="mb-4 text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl lg:leading-normal font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
-              Hello, I&apos;m Kasturi
-            </span>
-            <br />
-            <TypeAnimation
-              sequence={[
-                "A Passionate Engineer",
-                1500,
-                "A Creative Developer",
-                1500,
-                "A UI/UX Enthusiast",
-                1500,
-                "An Avid Reader",
-                1500,
-                "A Problem Solver",
-                1500,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-              className="text-gray-800 text-sm sm:text-base md:text-lg lg:text-xl"
-            />
-          </h1>
+         <h1 className="mb-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold">
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
+    Hello, I&apos;m Kasturi
+  </span>
+  <br />
+ <TypeAnimation
+  sequence={[
+    "A Passionate Engineer",
+    1500,
+    "A Creative Developer",
+    1500,
+    "A UI/UX Enthusiast",
+    1500,
+    "An Avid Reader",
+    1500,
+    "A Problem Solver",
+    1500,
+  ]}
+  wrapper="span"
+  speed={50}
+  repeat={Infinity}
+  className="text-gray-800 mb-6 text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+/>
 
-          <p className="text-gray-600 mb-6 text-sm sm:text-base md:text-lg max-w-xl mx-auto sm:mx-0">
-            Building beautiful and performant web & mobile apps with modern technologies.
-          </p>
+</h1>
 
-          {/* Social Icons */}
-          <div className="flex gap-4 sm:gap-6 justify-center sm:justify-start text-2xl sm:text-3xl text-gray-700 mb-8">
-            <Link href="https://www.linkedin.com/in/kasturi-p-shinde/" target="_blank" aria-label="LinkedIn">
-              <FaLinkedin className="hover:text-red-500 transition-colors duration-300" />
-            </Link>
-            <Link href="https://github.com/kasturi-23" target="_blank" aria-label="GitHub">
-              <FaGithub className="hover:text-red-500 transition-colors duration-300" />
-            </Link>
-            <Link href="mailto:kshinde3@hawk.illinoistech.edu" aria-label="Email">
-              <FaEnvelope className="hover:text-red-500 transition-colors duration-300" />
-            </Link>
-          </div>
+<p className="text-gray-600 mb-6 text-base sm:text-lg md:text-xl lg:text-2xl max-w-xl mx-auto sm:mx-0">
+  Building beautiful and performant web & mobile apps with modern technologies.
+</p>
+
+<div className="flex gap-4 sm:gap-6 justify-center sm:justify-start text-3xl sm:text-4xl text-gray-700 mb-8">
+  <Link href="https://www.linkedin.com/in/kasturi-p-shinde/" target="_blank" aria-label="LinkedIn">
+    <FaLinkedin className="hover:text-red-500 transition-colors duration-300" />
+  </Link>
+  <Link href="https://github.com/kasturi-23" target="_blank" aria-label="GitHub">
+    <FaGithub className="hover:text-red-500 transition-colors duration-300" />
+  </Link>
+  <Link href="mailto:kshinde3@hawk.illinoistech.edu" aria-label="Email">
+    <FaEnvelope className="hover:text-red-500 transition-colors duration-300" />
+  </Link>
+</div>
+
         </motion.div>
 
         {/* Right Image Section */}

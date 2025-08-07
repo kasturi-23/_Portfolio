@@ -25,27 +25,36 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <div className="relative flex flex-col items-center text-black w-full">
-        <div className="absolute left-1/2 top-0 h-full w-1 bg-orange-300 transform -translate-x-1/2"></div>
+      <div className="relative w-full max-w-3xl mx-auto px-2">
+        {/* Vertical line for md+ */}
+        <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-orange-300 transform -translate-x-1/2"></div>
 
-        {/* Entry 1 – Right */}
-        <div className="mb-10 flex w-full flex-col md:flex-row md:justify-start md:items-center">
-          <div className="md:w-1/2 md:pr-6 text-center md:text-right">
+        {/* Entry 1 */}
+        <div className="flex flex-col md:flex-row items-center mb-10 w-full">
+          {/* Left side (date + school) */}
+          <div className="md:w-1/2 md:pr-8 text-center md:text-right">
             <h3 className="text-lg font-bold">2024 – Present</h3>
             <p className="text-sm">
               Master of Science in Computer Science<br />
               <span className="text-gray-600">Illinois Institute of Technology</span>
             </p>
           </div>
-          <div className="my-2 md:my-0 md:mx-2 w-4 h-4 bg-orange-500 rounded-full border-2 border-white z-10 self-center"></div>
-          <div className="hidden md:block md:w-1/2" />
+
+          {/* Removed circle here */}
+
+          {/* Right side (empty on large screens) */}
+          <div className="hidden md:block md:w-1/2"></div>
         </div>
 
-        {/* Entry 2 – Left */}
-        <div className="mb-10 flex w-full flex-col md:flex-row md:justify-end md:items-center">
-          <div className="hidden md:block md:w-1/2" />
-          <div className="my-2 md:my-0 md:mx-2 w-4 h-4 bg-orange-500 rounded-full border-2 border-white z-10 self-center"></div>
-          <div className="md:w-1/2 md:pl-6 text-center md:text-left">
+        {/* Entry 2 */}
+        <div className="flex flex-col md:flex-row items-center mb-10 w-full">
+          {/* Left side empty on large screens */}
+          <div className="hidden md:block md:w-1/2"></div>
+
+          {/* Removed circle here */}
+
+          {/* Right side (date + school) */}
+          <div className="md:w-1/2 md:pl-8 text-center md:text-left mt-4 md:mt-0">
             <h3 className="text-lg font-bold">2019 – 2023</h3>
             <p className="text-sm">
               Bachelor of Engineering in Computer Engineering<br />
@@ -54,17 +63,21 @@ const TAB_DATA = [
           </div>
         </div>
 
-        {/* Entry 3 – Right */}
-        <div className="mb-10 flex w-full flex-col md:flex-row md:justify-start md:items-center">
-          <div className="md:w-1/2 md:pr-6 text-center md:text-right">
+        {/* Entry 3 */}
+        <div className="flex flex-col md:flex-row items-center mb-10 w-full">
+          {/* Left side (date + school) */}
+          <div className="md:w-1/2 md:pr-8 text-center md:text-right">
             <h3 className="text-lg font-bold">2016 – 2019</h3>
             <p className="text-sm">
               Diploma in Computer Engineering<br />
-              <span>Thakur Polytechnic</span>
+              <span className="text-gray-600">Thakur Polytechnic</span>
             </p>
           </div>
-          <div className="my-2 md:my-0 md:mx-2 w-4 h-4 bg-orange-500 rounded-full border-2 border-white z-10 self-center"></div>
-          <div className="hidden md:block md:w-1/2" />
+
+          {/* Removed circle here */}
+
+          {/* Right side (empty on large screens) */}
+          <div className="hidden md:block md:w-1/2"></div>
         </div>
       </div>
     ),
@@ -97,10 +110,10 @@ const AboutSection = () => {
   return (
     <section id="about" className="flex flex-col bg-transparent text-black min-h-[700px] px-4 sm:px-6 lg:px-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-10">
-        {/* Image container with responsive flipping */}
+        {/* Image container with flipping effect */}
         <div className="relative w-full h-[350px] sm:h-[400px] md:h-[450px] perspective mx-auto">
           <div className="relative w-full h-full transition-transform duration-700 transform-style preserve-3d hover:rotate-y-180">
-            {/* Front Side */}
+            {/* Front */}
             <div className="absolute w-full h-full backface-hidden">
               <Image
                 src="/images/about-image.png"
@@ -110,8 +123,7 @@ const AboutSection = () => {
                 className="rounded-lg object-cover w-full h-full"
               />
             </div>
-
-            {/* Back Side */}
+            {/* Back */}
             <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] rounded-lg flex flex-col items-center justify-center text-black p-6">
               <h3 className="text-xl sm:text-2xl font-semibold mb-4">Achievements</h3>
               <ul className="text-base sm:text-lg space-y-2 text-center">
@@ -123,7 +135,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Text Content */}
+        {/* Text content with tabbed section */}
         <motion.div
           className="mt-10 md:mt-0 text-left flex flex-col h-full"
           initial={{ opacity: 0, y: 30 }}
@@ -145,30 +157,29 @@ const AboutSection = () => {
             repeat={Infinity}
           />
 
-         <div className="flex flex-wrap gap-3 sm:gap-0 mt-4 justify-center sm:justify-start sm:px-0">
-  <TabButton
-    selectTab={() => handleTabChange("skills")}
-    active={tab === "skills"}
-    className="transition transform hover:scale-105 duration-300 text-black hover:text-orange-500 px-3 py-2 rounded-md"
-  >
-    <FaTools className="inline mr-2" /> Skills
-  </TabButton>
-  <TabButton
-    selectTab={() => handleTabChange("education")}
-    active={tab === "education"}
-    className="transition transform hover:scale-105 duration-300 text-black hover:text-orange-500 px-3 py-2 rounded-md"
-  >
-    <FaGraduationCap className="inline mr-2" /> Education
-  </TabButton>
-  <TabButton
-    selectTab={() => handleTabChange("certifications")}
-    active={tab === "certifications"}
-    className="transition transform hover:scale-105 duration-300 text-black hover:text-orange-500 px-3 py-2 rounded-md "
-  >
-    <FaCertificate className="inline mr-2" /> Certifications
-  </TabButton>
-</div>
-
+          <div className="flex flex-wrap gap-3 sm:gap-0 mt-4 justify-center sm:justify-start sm:px-0">
+            <TabButton
+              selectTab={() => handleTabChange("skills")}
+              active={tab === "skills"}
+              className="transition transform hover:scale-105 duration-300 text-black hover:text-orange-500 px-3 py-2 rounded-md"
+            >
+              <FaTools className="inline mr-2" /> Skills
+            </TabButton>
+            <TabButton
+              selectTab={() => handleTabChange("education")}
+              active={tab === "education"}
+              className="transition transform hover:scale-105 duration-300 text-black hover:text-orange-500 px-3 py-2 rounded-md"
+            >
+              <FaGraduationCap className="inline mr-2" /> Education
+            </TabButton>
+            <TabButton
+              selectTab={() => handleTabChange("certifications")}
+              active={tab === "certifications"}
+              className="transition transform hover:scale-105 duration-300 text-black hover:text-orange-500 px-3 py-2 rounded-md"
+            >
+              <FaCertificate className="inline mr-2" /> Certifications
+            </TabButton>
+          </div>
 
           <motion.div
             key={tab}
