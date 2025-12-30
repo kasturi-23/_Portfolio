@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -14,26 +15,36 @@ const EmailSection = () => {
       message: e.target.message.value,
     };
 
-    const response = await fetch("/api/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    if (response.status === 200) {
-      setEmailSubmitted(true);
+      if (response.ok) {
+        setEmailSubmitted(true);
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
     }
   };
 
   return (
     <section
       id="contact"
-      className="relative flex flex-col items-center justify-center text-center my-6 py-8 px-3 sm:px-4 lg:px-8"
+      className="relative flex flex-col items-center justify-center text-center my-6 py-8 px-3 sm:px-4 lg:px-6"
     >
       {/* Radial Background Glow */}
-      <div className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-100 to-transparent h-56 w-56 blur-lg z-0" />
+      <div className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-100 to-transparent h-48 w-48 blur-lg z-0" />
 
-      <div className="w-full max-w-3xl z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="w-full max-w-3xl z-10"
+      >
         <h2 className="mb-2 text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
           Let&apos;s Connect!
         </h2>
@@ -43,27 +54,44 @@ const EmailSection = () => {
           question or just want to say hi, I’ll try my best to get back to you!
         </p>
 
-        <div className="flex gap-4 justify-center text-2xl text-gray-700 mb-4">
-          <Link
-            href="https://www.linkedin.com/in/kasturi-p-shinde/"
-            target="_blank"
-          >
-            <FaLinkedin className="hover:text-red-500 transition-colors" />
-          </Link>
-          <Link href="https://github.com/kasturi-23" target="_blank">
-            <FaGithub className="hover:text-red-500 transition-colors" />
-          </Link>
-          <Link href="mailto:kshinde3@hawk.illinoistech.edu">
-            <FaEnvelope className="hover:text-red-500 transition-colors" />
-          </Link>
+        {/* Social Icons */}
+        <div className="flex gap-5 justify-center text-2xl text-gray-700 mb-4">
+          {[
+            {
+              href: "https://www.linkedin.com/in/kasturi-p-shinde/",
+              icon: <FaLinkedin />,
+            },
+            {
+              href: "https://github.com/kasturi-23",
+              icon: <FaGithub />,
+            },
+            {
+              href: "mailto:kshinde3@hawk.illinoistech.edu",
+              icon: <FaEnvelope />,
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.15 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href={item.href} target="_blank" rel="noopener noreferrer">
+                {item.icon}
+              </Link>
+            </motion.div>
+          ))}
         </div>
 
         {/* Form */}
         <div className="w-full">
           {emailSubmitted ? (
-            <p className="mt-4 text-sm text-orange-500">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-4 text-sm text-orange-500"
+            >
               Email sent successfully!
-            </p>
+            </motion.p>
           ) : (
             <form
               className="flex flex-col gap-3 text-left"
@@ -74,6 +102,7 @@ const EmailSection = () => {
                   Your email
                 </label>
                 <input
+                  suppressHydrationWarning
                   name="email"
                   type="email"
                   required
@@ -87,6 +116,7 @@ const EmailSection = () => {
                   Subject
                 </label>
                 <input
+                  suppressHydrationWarning
                   name="subject"
                   type="text"
                   required
@@ -100,6 +130,7 @@ const EmailSection = () => {
                   Message
                 </label>
                 <textarea
+                  suppressHydrationWarning
                   name="message"
                   rows={4}
                   required
@@ -108,16 +139,18 @@ const EmailSection = () => {
                 />
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.95 }}
                 type="submit"
                 className="rounded-lg bg-orange-500 py-2 font-medium text-white hover:bg-orange-600 transition"
               >
                 Send Message
-              </button>
+              </motion.button>
             </form>
           )}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
