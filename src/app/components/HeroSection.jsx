@@ -24,7 +24,7 @@ const HeroSection = () => {
       <div className="absolute -z-10 inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-200/20 via-pink-200/10 to-orange-200/20 blur-2xl" />
 
       <div className="w-full max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
 
           {/* TEXT */}
           <motion.div
