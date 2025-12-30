@@ -37,7 +37,7 @@ const HeroSection = () => {
           >
             <h1 className="mb-4 font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
-                Hello, I&apos;m Kasturi P Shinde
+                Hello, I&apos;m Kasturi 
               </span>
 
               <TypeAnimation
@@ -90,11 +90,12 @@ const HeroSection = () => {
             <div
               className="
                 relative rounded-full p-1
-                bg-gradient-to-tr from-yellow-300 via-pink-400 to-orange-500
-                w-[200px] h-[200px]
-                sm:w-[240px] sm:h-[240px]
-                md:w-[280px] md:h-[280px]
-                shadow-xl
+    bg-gradient-to-tr from-yellow-300 via-pink-400 to-orange-500
+    w-[260px] h-[260px]
+    sm:w-[320px] sm:h-[320px]
+    md:w-[380px] md:h-[380px]
+    lg:w-[440px] lg:h-[440px]
+    shadow-xl
               "
             >
               <Image

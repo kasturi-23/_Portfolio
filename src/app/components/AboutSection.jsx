@@ -47,7 +47,6 @@ const TAB_DATA = [
 >
   {/* Center line (only visible on md and above) */}
   <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-orange-300 transform -translate-x-1/2"></div>
-
   <div className="flex flex-col md:flex-row items-center mb-10 w-full">
     <div className="md:w-1/2 md:pr-8 text-center md:text-right">
       <h3 className="text-lg font-bold">2024 – Present</h3>
@@ -119,35 +118,8 @@ const AboutSection = () => {
       id="about"
       className="flex flex-col bg-transparent text-black min-h-[700px] px-4 py-1 sm:px-6 lg:px-16"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-10 pb-1">
-        
-        {/* Image */}
-        <motion.div
-  initial={{ opacity: 0, rotateY: 15 }}
-  animate={{ opacity: 1, rotateY: 0 }}
-  transition={{ duration: 0.8 }}
-  className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] perspective mx-auto"
->
-  <div className="relative w-full h-full transition-transform duration-700 transform-style preserve-3d hover:rotate-y-180">
-    <div className="absolute w-full h-full backface-hidden">
-      <Image
-        src="/images/about-image.png"
-        alt="Profile"
-        width={600}   // reduced width
-        height={300}  // reduced height
-        className="rounded-lg object-cover w-full h-full"
-      />
-    </div>
-    <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] rounded-lg flex flex-col items-center justify-center text-black p-4">
-      <h3 className="text-lg font-semibold mb-2">Achievements</h3>
-      <ul className="text-sm space-y-1 text-center">
-        <li>Projects: <span className="font-bold">10+</span></li>
-        <li>Publications: <span className="font-bold">2</span></li>
-        <li>Hackathons: <span className="font-bold">2</span></li>
-      </ul>
-    </div>
-  </div>
-</motion.div>
+      <div className=" md:grid-cols-2 gap-8 items-center pt-10 pb-1">
+    
 
         {/* Text */}
         <motion.div
@@ -171,27 +143,25 @@ const AboutSection = () => {
   <TabButton
     selectTab={() => handleTabChange("skills")}
     active={tab === "skills"}
-    className="px-2 py-1 text-sm"
+    className="px-1 py-1 text-sm"
   >
     <FaTools className="inline mr-1" /> Skills
   </TabButton>
   <TabButton
     selectTab={() => handleTabChange("education")}
     active={tab === "education"}
-    className="px-2 py-1 text-sm"
+    className="px-1 py-1 text-sm"
   >
     <FaGraduationCap className="inline mr-1" /> Education
   </TabButton>
   <TabButton
     selectTab={() => handleTabChange("certifications")}
     active={tab === "certifications"}
-    className="px-2 py-1 text-sm"
+    className="px-1 py-1 text-sm"
   >
     <FaCertificate className="inline mr-1" /> Certifications
   </TabButton>
 </div>
-
-
           <motion.div
             key={tab}
             initial={{ opacity: 0, y: 10 }}
