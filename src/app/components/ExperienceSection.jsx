@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 const experiences = [
   {
     date: "Sep 2025 – Dec 2025",
@@ -56,46 +57,61 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="py-2 px-1 sm:px-3 lg:px-5">
-      <h2 className="text-center text-3xl sm:text-4xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
+    <section id="experience" className="py-3 px-1 sm:px-4 lg:px-6">
+      <h2 className="text-center text-2xl sm:text-3xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
         Experience
       </h2>
 
-      <div className="relative max-w-6xl mx-auto">
-        {/* Timeline line (hidden on mobile) */}
-        <div className="hidden sm:block absolute left-1/2 top-0 w-1 h-full bg-orange-400 transform -translate-x-1/2 z-0" />
+      <div className="relative max-w-5xl mx-auto">
+        {/* Timeline line */}
+        <div className="hidden sm:block absolute left-1/2 top-0 w-[2px] h-full bg-orange-300 transform -translate-x-1/2 z-0" />
 
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`relative mb-8 flex flex-col sm:flex-row ${
+            className={`relative mb-6 flex flex-col sm:flex-row ${
               index % 2 === 0 ? "sm:flex-row-reverse" : ""
             } items-center sm:items-start`}
           >
             {/* Timeline dot */}
             <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 z-10">
-              <div className="w-5 h-5 bg-orange-500 rounded-full border-4 border-white shadow-md" />
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="w-4 h-4 bg-orange-500 rounded-full border-2 border-white shadow"
+              />
             </div>
 
             {/* Experience card */}
             <motion.div
               onClick={() => toggleDetails(index)}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
               viewport={{ once: true }}
               className="w-full sm:w-1/2 px-2 cursor-pointer"
             >
-              <div className="bg-white border-l-4 border-orange-400 p-4 rounded-xl shadow-md hover:shadow-orange-200 transition-shadow duration-300">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1">{exp.title}</h3>
-                <p className="text-sm sm:text-base text-orange-600 font-medium">{exp.organization}</p>
-                <p className="text-sm text-gray-500 italic">{exp.location}</p>
-                <p className="text-xs text-gray-400 mt-1">{exp.date}</p>
+              <div className="bg-white border-l-4 border-orange-400 p-3 rounded-lg shadow-sm hover:shadow-orange-200 transition-all duration-300">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-0.5">
+                  {exp.title}
+                </h3>
+                <p className="text-sm text-orange-600 font-medium">
+                  {exp.organization}
+                </p>
+                <p className="text-xs text-gray-500 italic">
+                  {exp.location}
+                </p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  {exp.date}
+                </p>
 
                 <AnimatePresence>
                   {activeIndex === index && (
                     <motion.ul
-                      className="mt-2 list-disc list-inside text-sm text-gray-700 space-y-1"
+                      className="mt-2 list-disc list-inside text-xs sm:text-sm text-gray-700 space-y-1"
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
@@ -110,7 +126,7 @@ const ExperienceSection = () => {
               </div>
             </motion.div>
 
-            {/* Spacer to align on larger screens */}
+            {/* Spacer */}
             <div className="hidden sm:block sm:w-1/2" />
           </div>
         ))}
