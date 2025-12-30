@@ -11,20 +11,18 @@ const HeroSection = () => {
     <section
       id="home"
       className="
-         relative overflow-hidden
-    bg-gradient-to-b from-[#FFF8E1] via-[#FFFFFF] to-[#FFE5B4]
-    pt-28 sm:pt-32
-    pb-16
-    px-1 sm:px-6 md:px-12
-    w-full
-    min-h-screen
+        relative overflow-hidden
+        bg-gradient-to-b from-[#FFF8E1] via-[#FFFFFF] to-[#FFE5B4]
+        min-h-screen
+        flex items-center justify-center
+        px-4 sm:px-6 md:px-12
       "
     >
       {/* Background Glow */}
       <div className="absolute -z-10 inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-200/20 via-pink-200/10 to-orange-200/20 blur-2xl" />
 
       <div className="w-full max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
 
           {/* TEXT */}
           <motion.div
@@ -44,16 +42,11 @@ const HeroSection = () => {
 
               <TypeAnimation
                 sequence={[
-                  "A Passionate Engineer",
-                  1500,
-                  "A Creative Developer",
-                  1500,
-                  "A UI/UX Enthusiast",
-                  1500,
-                  "An Avid Reader",
-                  1500,
-                  "A Problem Solver",
-                  1500,
+                  "A Passionate Engineer", 1500,
+                  "A Creative Developer", 1500,
+                  "A UI/UX Enthusiast", 1500,
+                  "An Avid Reader", 1500,
+                  "A Problem Solver", 1500,
                 ]}
                 wrapper="span"
                 speed={50}
@@ -61,7 +54,7 @@ const HeroSection = () => {
                 className="
                   block mt-2
                   text-gray-800
-                  text-xl sm:text-2xl md:text-3xl lg:text-4xl
+                  text-xl sm:text-2xl md:text-3xl
                 "
               />
             </h1>
@@ -91,19 +84,16 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="
               col-span-12 sm:col-span-5
-              flex justify-center
-              mt-10 sm:mt-0
+              flex justify-center items-center
             "
           >
             <div
               className="
                 relative rounded-full p-1
                 bg-gradient-to-tr from-yellow-300 via-pink-400 to-orange-500
-
-                w-[220px] h-[220px]
-                sm:w-[300px] sm:h-[300px]
-                md:w-[380px] md:h-[380px]
-
+                w-[180px] h-[180px]
+                sm:w-[240px] sm:h-[240px]
+                md:w-[280px] md:h-[280px]
                 shadow-xl
               "
             >
