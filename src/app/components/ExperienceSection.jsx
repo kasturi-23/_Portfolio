@@ -1,8 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 const experiences = [
+  {
+    date: "Sep 2025 – Dec 2025",
+    title: "Full Stack Developer",
+    organization: "Spree",
+    location: "Chicago, IL",
+    details: [
+      "Developed full-stack features using React.js, Node.js, and MongoDB.",
+      "Implemented RESTful APIs and integrated with frontend components.",
+      "Optimized application performance and reduced page load times by 20%.",
+    ],
+  },
   {
     date: "May 2025 – Jul 2025",
     title: "Research Assistant",
@@ -46,7 +56,7 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="py-8 px-2 sm:px-4 lg:px-6">
+    <section id="experience" className="py-2 px-1 sm:px-3 lg:px-5">
       <h2 className="text-center text-3xl sm:text-4xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
         Experience
       </h2>
