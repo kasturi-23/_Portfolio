@@ -93,12 +93,12 @@ const ProjectsSection = () => {
     >
       {/* Section wrapper to prevent width doubling */}
       <div className="max-w-screen-xl mx-auto px-4">
-        <h2 className="text-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] mb-6">
+        <h2 className="text-center text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] mb-6">
           My Projects
         </h2>
 
         {/* Tag filters */}
-        <div className="flex justify-center items-center gap-2 mb-8">
+        <div className="flex justify-center items-center gap-2 mb-4">
           <ProjectTag
             onClick={handleTagChange}
             name="All"

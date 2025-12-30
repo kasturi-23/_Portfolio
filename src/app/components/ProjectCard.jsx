@@ -16,7 +16,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
       {/* Image Container */}
       <div
         className="
-          h-44 sm:h-56 md:h-64 lg:h-72
+          h-30 sm:h-56 md:h-64 lg:h-72
           rounded-t-xl relative group
           bg-cover bg-center overflow-hidden
         "
@@ -62,7 +62,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
             <Link
               href={previewUrl}
               className="
-                h-12 w-12
+                h-5 w-8
                 border-2 rounded-full
                 border-[#ADB7BE] hover:border-white
                 relative group/link

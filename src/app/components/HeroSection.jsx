@@ -15,13 +15,13 @@ const HeroSection = () => {
         bg-gradient-to-b from-[#FFF8E1] via-[#FFFFFF] to-[#FFE5B4]
         min-h-screen
         flex items-center justify-center
-        px-4 sm:px-6 md:px-12
+        px-2 sm:px-6 md:px-12
       "
     >
       {/* Background Glow */}
       <div className="absolute -z-10 inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-200/20 via-pink-200/10 to-orange-200/20 blur-2xl" />
 
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="w-full max-w-4xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
 
           {/* TEXT */}
@@ -42,8 +42,8 @@ const HeroSection = () => {
 
               <TypeAnimation
                 sequence={[
-                  "A Passionate Engineer", 1500,
-                  "A Creative Developer", 1500,
+                  "A Software Developer", 1500,
+                  "A AI/ML Developer", 1500,
                   "A UI/UX Enthusiast", 1500,
                   "An Avid Reader", 1500,
                   "A Problem Solver", 1500,
@@ -91,7 +91,7 @@ const HeroSection = () => {
               className="
                 relative rounded-full p-1
                 bg-gradient-to-tr from-yellow-300 via-pink-400 to-orange-500
-                w-[180px] h-[180px]
+                w-[200px] h-[200px]
                 sm:w-[240px] sm:h-[240px]
                 md:w-[280px] md:h-[280px]
                 shadow-xl
