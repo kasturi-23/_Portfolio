@@ -25,7 +25,7 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <div className="relative w-full max-w-3xl mx-auto px-2">
+      <div className="relative w-full max-w-3xl mx-auto px-2 border-l-2 border-orange-300">
         {/* Vertical line for md+ */}
         <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-orange-300 transform -translate-x-1/2"></div>
 
@@ -108,8 +108,9 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="flex flex-col bg-transparent text-black min-h-[700px] px-4 sm:px-6 lg:px-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-10">
+    <section id="about" className="flex flex-col bg-transparent text-black min-h-[700px]
+             px-4 py-1 sm:px-6 lg:px-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-10 pb-1">
         {/* Image container with flipping effect */}
         <div className="relative w-full h-[350px] sm:h-[400px] md:h-[450px] perspective mx-auto">
           <div className="relative w-full h-full transition-transform duration-700 transform-style preserve-3d hover:rotate-y-180">
@@ -119,13 +120,13 @@ const AboutSection = () => {
                 src="/images/about-image.png"
                 alt="Profile"
                 width={1200}
-                height={700}
+                height={600}
                 className="rounded-lg object-cover w-full h-full"
               />
             </div>
             {/* Back */}
             <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] rounded-lg flex flex-col items-center justify-center text-black p-6">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4">Achievements</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2">Achievements</h3>
               <ul className="text-base sm:text-lg space-y-2 text-center">
                 <li>Projects: <span className="font-bold">10+</span></li>
                 <li>Publications: <span className="font-bold">2</span></li>
@@ -137,7 +138,7 @@ const AboutSection = () => {
 
         {/* Text content with tabbed section */}
         <motion.div
-          className="mt-10 md:mt-0 text-left flex flex-col h-full"
+          className="mt-10 mb-1 md:mt-0 text-left flex flex-col h-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

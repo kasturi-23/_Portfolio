@@ -80,13 +80,13 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="w-full py-10">
-      <h2 className="text-center text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] mt-2 mb-4 md:mb-5">
+    <section id="projects" className="w-full py-6">
+      <h2 className="text-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D] mt-0 mb-3">
         My Projects
       </h2>
 
       {/* Tag filter buttons */}
-      <div className="text-black flex flex-row justify-center items-center gap-2 py-4">
+      <div className="flex flex-row justify-center items-center gap-1 py-2">
         <ProjectTag
           onClick={handleTagChange}
           name="All"
@@ -106,7 +106,7 @@ const ProjectsSection = () => {
 
       {/* Grid container */}
       <div className="w-full max-w-screen-2xl mx-auto px-4">
-        <ul ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        <ul ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {filteredProjects.map((project, index) => (
             <motion.li
               key={project.id}
