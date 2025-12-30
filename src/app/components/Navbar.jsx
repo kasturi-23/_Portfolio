@@ -19,46 +19,43 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FF6F3C] border-b border-[#FF6F3C] shadow-md">
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8 py-2 md:py-3">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FF6F3C] shadow-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+        
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 text-white">
-          <CodeBracketIcon className="h-6 w-6 md:h-7 md:w-7 text-white" />
-          <span className="text-base sm:text-lg md:text-xl font-semibold">
+        <Link href="/" className="flex items-center gap-2 text-white">
+          <CodeBracketIcon className="h-6 w-6" />
+          <span className="text-lg font-semibold">
             Kasturi P Shinde
           </span>
         </Link>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setNavbarOpen(!navbarOpen)}
-            className="text-white p-2 border rounded border-white hover:text-yellow-200 hover:border-yellow-200 transition"
-            aria-label="Toggle Menu"
-          >
-            {navbarOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </button>
-        </div>
+        <button
+          onClick={() => setNavbarOpen(!navbarOpen)}
+          className="md:hidden text-white border border-white p-2 rounded"
+          aria-label="Toggle Menu"
+        >
+          {navbarOpen ? (
+            <XMarkIcon className="h-6 w-6" />
+          ) : (
+            <Bars3Icon className="h-6 w-6" />
+          )}
+        </button>
 
         {/* Desktop Menu */}
-        <div className="hidden md:block">
-          <ul className="flex space-x-4 md:space-x-6">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.path}
-                  className="text-white text-sm md:text-base font-semibold hover:text-yellow-300 transition"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="hidden md:flex gap-6">
+          {navLinks.map((link) => (
+            <li key={link.title}>
+              <a
+                href={link.path}
+                className="text-white text-base font-medium hover:text-yellow-300 transition"
+              >
+                {link.title}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Mobile Menu Overlay */}
