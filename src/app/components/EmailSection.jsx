@@ -2,17 +2,21 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSending(true);
+
+    const form = e.target;
     const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value,
     };
 
     try {
@@ -24,9 +28,17 @@ const EmailSection = () => {
 
       if (response.ok) {
         setEmailSubmitted(true);
+        form.reset();
+
+        // ⏱️ Hide success message after 10 seconds
+        setTimeout(() => {
+          setEmailSubmitted(false);
+        }, 10000);
       }
     } catch (err) {
       console.error("Error sending email:", err);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -45,7 +57,7 @@ const EmailSection = () => {
         viewport={{ once: true }}
         className="w-full max-w-3xl z-10"
       >
-        <h2 className="mb-2 text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
+        <h2 className="text-center text-2xl sm:text-3xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F3C] to-[#FFD93D]">
           Let&apos;s Connect!
         </h2>
 
@@ -82,73 +94,81 @@ const EmailSection = () => {
           ))}
         </div>
 
-        {/* Form */}
+        {/* Contact Form */}
         <div className="w-full">
-          {emailSubmitted ? (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mt-4 text-sm text-orange-500"
-            >
-              Email sent successfully!
-            </motion.p>
-          ) : (
-            <form
-              className="flex flex-col gap-3 text-left"
-              onSubmit={handleSubmit}
-            >
-              <div>
-                <label className="block mb-1 text-sm font-medium text-black">
-                  Your email
-                </label>
-                <input
-                  suppressHydrationWarning
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@example.com"
-                  className="w-full rounded-lg border border-gray-300 bg-[#f4f4f4] p-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 text-sm font-medium text-black">
-                  Subject
-                </label>
-                <input
-                  suppressHydrationWarning
-                  name="subject"
-                  type="text"
-                  required
-                  placeholder="Just saying hi"
-                  className="w-full rounded-lg border border-gray-300 bg-[#f4f4f4] p-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 text-sm font-medium text-black">
-                  Message
-                </label>
-                <textarea
-                  suppressHydrationWarning
-                  name="message"
-                  rows={4}
-                  required
-                  placeholder="Let's talk about..."
-                  className="w-full rounded-lg border border-gray-300 bg-[#f4f4f4] p-2 text-sm resize-y focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                />
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.95 }}
-                type="submit"
-                className="rounded-lg bg-orange-500 py-2 font-medium text-white hover:bg-orange-600 transition"
+          <AnimatePresence>
+            {emailSubmitted && (
+              <motion.p
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="mb-4 text-sm text-orange-500 text-center"
               >
-                Send Message
-              </motion.button>
-            </form>
-          )}
+                ✅ Email sent successfully!
+              </motion.p>
+            )}
+          </AnimatePresence>
+
+          <form
+            className="flex flex-col gap-3 text-left"
+            onSubmit={handleSubmit}
+          >
+            <div>
+              <label className="block mb-1 text-sm font-medium text-black">
+                Your email
+              </label>
+              <input
+                suppressHydrationWarning
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="w-full rounded-lg border border-gray-300 bg-[#f4f4f4] p-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium text-black">
+                Subject
+              </label>
+              <input
+                suppressHydrationWarning
+                name="subject"
+                type="text"
+                required
+                placeholder="Just saying hi"
+                className="w-full rounded-lg border border-gray-300 bg-[#f4f4f4] p-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium text-black">
+                Message
+              </label>
+              <textarea
+                suppressHydrationWarning
+                name="message"
+                rows={4}
+                required
+                placeholder="Let's talk about..."
+                className="w-full rounded-lg border border-gray-300 bg-[#f4f4f4] p-2 text-sm resize-y focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              />
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              disabled={isSending}
+              className={`rounded-lg py-2 font-medium text-white transition ${
+                isSending
+                  ? "bg-orange-300 cursor-not-allowed"
+                  : "bg-orange-500 hover:bg-orange-600"
+              }`}
+            >
+              {isSending ? "Sending..." : "Send Message"}
+            </motion.button>
+          </form>
         </div>
       </motion.div>
     </section>
