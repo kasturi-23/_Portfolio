@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import NavLink from "./NavLink";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -21,11 +20,11 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FF6F3C] border-b border-[#FF6F3C] shadow-md">
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-4">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8 py-2 md:py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 text-white">
-          <CodeBracketIcon className="h-7 w-7 md:h-8 md:w-8 text-white" />
-          <span className="text-lg sm:text-xl md:text-2xl font-semibold">
+          <CodeBracketIcon className="h-6 w-6 md:h-7 md:w-7 text-white" />
+          <span className="text-base sm:text-lg md:text-xl font-semibold">
             Kasturi P Shinde
           </span>
         </Link>
@@ -47,12 +46,12 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:block">
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-4 md:space-x-6">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <a
                   href={link.path}
-                  className="text-white text-lg font-semibold hover:text-yellow-300 transition"
+                  className="text-white text-sm md:text-base font-semibold hover:text-yellow-300 transition"
                 >
                   {link.title}
                 </a>
